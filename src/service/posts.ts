@@ -16,19 +16,15 @@ export async function getIsFeaturedPosts(isFeatured: boolean): Promise<Post[]> {
   const data = await fs.readFile(filePath, 'utf-8');
   return JSON.parse(data).filter((item: Post) => item.featured === isFeatured);
 }
-export async function getPosts(): Promise<{
-  posts: Post[];
-  uniqueCategories: string[];
-}> {
+export async function getAllPosts(): Promise<Post[]> {
   const filePath = path.join(process.cwd(), 'data', 'posts.json');
   const data = await fs.readFile(filePath, 'utf-8');
   const parsedData: Post[] = JSON.parse(data);
-  const uniqueCategories: string[] = [
-    ...new Set<string>(parsedData.map((item: Post) => item.category)),
-  ];
 
-  return {
-    posts: parsedData,
-    uniqueCategories: uniqueCategories,
-  };
+  return parsedData;
+}
+
+export async function getPost(path: string): Promise<Post | undefined> {
+  const posts = await getAllPosts();
+  return posts.find((item) => item.path === path);
 }
