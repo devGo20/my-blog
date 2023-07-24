@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function PostCard(post: Post) {
   return (
-    <div className='rounded overflow-hidden shadow-lg'>
+    <div className='rounded overflow-hidden shadow-lg group'>
       <Image
         src={`/images/posts/${post.path}.png`}
         alt={post.title}
         width={200}
         height={200}
-        className='w-full'
+        layout='responsive'
       />
       <div className='p-6'>
         <p className='text-gray-700 text-xs text-base text-right'>
