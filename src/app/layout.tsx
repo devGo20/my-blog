@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='p-10'>
-        <header className='flex justify-between align-center'>
+        <header className='flex justify-between mb-7 align-center'>
           <Link href='/'>Been's Blog</Link>
           <nav className='flex space-x-5'>
             <Link href='/'>home</Link>
