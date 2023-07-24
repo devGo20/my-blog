@@ -1,26 +1,29 @@
 import { Post } from '@/service/posts';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function PostCard(post: Post) {
   return (
     <div className='rounded overflow-hidden shadow-lg group'>
-      <Image
-        src={`/images/posts/${post.path}.png`}
-        alt={post.title}
-        width={200}
-        height={200}
-        layout='responsive'
-      />
-      <div className='p-6'>
-        <p className='text-gray-700 text-xs text-base text-right'>
-          {post.date}
-        </p>
-        <div className='font-bold text-xl mb-1'>{post.title}</div>
-        <p className='text-gray-700 text-sm text-base'>{post.description}</p>
-        <p className='mt-2 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-orange-200 text-orange-700 rounded-full'>
-          {post.category}
-        </p>
-      </div>
+      <Link href={`/posts/${post.path}`}>
+        <Image
+          src={`/images/posts/${post.path}.png`}
+          alt={post.title}
+          width={200}
+          height={200}
+          layout='responsive'
+        />
+        <div className='p-6'>
+          <p className='text-gray-700 text-xs text-base text-right'>
+            {post.date}
+          </p>
+          <div className='font-bold text-xl mb-1'>{post.title}</div>
+          <p className='text-gray-700 text-sm text-base'>{post.description}</p>
+          <p className='mt-2 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-orange-200 text-orange-700 rounded-full'>
+            {post.category}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }
